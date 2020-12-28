@@ -21,7 +21,7 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     const units = new Set(['l', 'gal', 'lbs', 'kg', 'mi', 'km']);
-    const regex = /[a-zA-Z]+$/
+    const regex = /[a-zA-Z]+$/;
     let splitIndex = input.search(regex);
     let result = input.substring(splitIndex, input.length);
     result = result.toLowerCase();

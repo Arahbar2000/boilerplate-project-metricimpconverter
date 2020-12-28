@@ -27,8 +27,6 @@ module.exports = function (app) {
         let returnNum = convertHandler.convert(initNum, initUnit);
         returnNum = parseFloat(returnNum.toFixed(5));
         let returnUnit = convertHandler.getReturnUnit(initUnit);
-        if (initUnit.toUpperCase() === 'L') initUnit = initUnit.toUpperCase();
-        if (returnUnit.toUpperCase() === 'L') returnUnit = returnUnit.toUpperCaseCase();
         let toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
         res.status(200).json({ initNum, initUnit, returnNum, returnUnit, string: toString});
       } catch (err) {
