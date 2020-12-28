@@ -26,6 +26,7 @@ function ConvertHandler() {
     let result = input.substring(splitIndex, input.length);
     result = result.toLowerCase();
     if (!units.has(result)) return null;
+    if (result === 'l') return result.toUpperCase();
     return result;
   };
   
@@ -39,6 +40,7 @@ function ConvertHandler() {
       'km': 'mi'
     }
     let result = REF[initUnit.toLowerCase()];
+    if (result === 'l') return result.toUpperCase();
     return result;
   };
 
