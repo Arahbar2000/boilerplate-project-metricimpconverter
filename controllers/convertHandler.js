@@ -20,40 +20,38 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    const units = new Set(['L', 'gal', 'lbs', 'kg', 'mi', 'km']);
+    const units = new Set(['l', 'gal', 'lbs', 'kg', 'mi', 'km']);
     const regex = /[a-zA-Z]+$/
     let splitIndex = input.search(regex);
     let result = input.substring(splitIndex, input.length);
-    result = result.toUpperCase() === 'L' ? result.toUpperCase() : result.toLowerCase();
+    result = result.toLowerCase();
     if (!units.has(result)) return null;
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
     const REF = {
-      'L': 'gal',
-      'gal': 'L',
+      'l': 'gal',
+      'gal': 'l',
       'lbs': 'kg',
       'kg': 'lbs',
       'mi': 'km',
       'km': 'mi'
     }
-    let result;
-    if (initUnit.toUpperCase() === 'L') result = REF[initUnit.toUpperCase()];
-    else result = REF[initUnit.toLowerCase()];
+    let result = REF[initUnit.toLowerCase()];
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     const REF = {
-      'L': 'liters',
+      'l': 'liters',
       'gal': 'gallons',
       'lbs': 'pounds',
       'kg': 'kilograms',
       'mi': 'miles',
       'km': 'kilometers'
     }
-    let result = REF[unit];
+    let result = REF[unit.toLowerCase()];
     return result;
   };
   
@@ -62,14 +60,14 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     const REF = {
-      'L': 1/galToL,
+      'l': 1/galToL,
       'gal': galToL,
       'lbs': lbsToKg,
       'kg': 1/lbsToKg,
       'mi': miToKm,
       'km': 1/miToKm
     }
-    let result = parseFloat(initNum * REF[initUnit]);
+    let result = parseFloat(initNum * REF[initUnit.toLowerCase()]);
     return result;
   };
   
